@@ -84,8 +84,8 @@ const getBlogData = async function (req, res) {
         }
         //======================================= if data is entered in queryparams ======================================
         if (Object.keys(queryData).length !== 0) {
-        
-            let getBlog = await blogModel.find({$and:[queryData,{isDeleted:false,isPublished:true}]}).populate("authorId")
+
+            let getBlog = await blogModel.find({ $and: [queryData, { isDeleted: false, isPublished: true }] }).populate("authorId")
             if (getBlog.length == 0) {
                 return res.status(404).send({ status: false, msg: "No such blog exist.Please provide correct data" })
             }
